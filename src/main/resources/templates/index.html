@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<button class="btn btn-dark">Hello From Bootstrap</button>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Page</title>
+</head>
+<body>
+
+<p th:text="${phoneBookMsg}"></p>
+<form class="user-form" method="post" th:action="@{/create}" th:object="${entryForm}">
+
+    <label>
+        First name:
+        <input type="text" th:field="*{firstName}">
+    </label>
+    <label>
+        First name:
+        <input type="text" th:field="*{lastName}">
+    </label>
+    <label>
+        Tel:
+        <input type="number" th:field="*{phoneNumber}">
+    </label>
+    <div class="elements" th:each="entry : ${entries}">
+            <p  th:text="${entry.firstName}"></p>
+            <p  th:text="${entry.lastName}"></p>
+            <p  th:text="${entry.phoneNumber}"></p>
+    </div>
+
+    <button class="user-form-elem" type="submit">
+        SEND DATA TO THE SERVER
+    </button>
+</form>
+
+</body>
+</html>
+
